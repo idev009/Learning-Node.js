@@ -1,4 +1,5 @@
 console.log("before");
+// callback hell -> because the structure is too messy and uncleaned
 getUser(1, (user) => {
   console.log("user", user);
   githubRepoUsername(user.name, (repo) => {
