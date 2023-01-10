@@ -11,7 +11,7 @@ const p2 = new Promise((resolve, reject) => {
     // reject(new Error("message"));
   }, 2000);
 });
-
+// Parallel Promises
 Promise.all([p1, p2])
   .then((result) => console.log("result", result))
   .catch((err) => console.log(err));
