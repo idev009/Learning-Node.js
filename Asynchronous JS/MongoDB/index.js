@@ -40,3 +40,7 @@ fetchRecord();
 // createCourse();
 
 // mongodb://localhost:27017
+
+// Comparision Operators gt,lt,lte,gte, in , nin
+// Logical Operators and, or
+// Regular Expression :- String
