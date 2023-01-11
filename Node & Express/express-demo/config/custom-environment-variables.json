@@ -1,6 +1,5 @@
 {
   "mail": {
-    "host": "Development-prod-mail-server",
     "password": "app_password"
   }
 }

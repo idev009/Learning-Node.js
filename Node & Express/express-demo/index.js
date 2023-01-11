@@ -48,6 +48,7 @@ app.use(bodyParser.json());
 
 // undefined// console.log(process.env.NODE_ENV);
 console.log(app.get("env"));
+// console.log(process.env.app_password);
 
 // if (app.get("env") == "development") {
 //   app.use(morgan("tiny"));
@@ -62,6 +63,7 @@ console.log(app.get("env"));
 // define settings for individial envirionment and console log to check here
 console.log("Application Name :" + config.get("name"));
 console.log("Mail Server : " + config.get("mail.host"));
+console.log("Mail Server : " + config.get("mail.password"));
 // --------------------------
 
 // --------------------Debugging Package Debug -------------------------
