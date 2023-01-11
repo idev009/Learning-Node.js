@@ -28,7 +28,11 @@ async function createCourse() {
 }
 
 async function fetchRecord() {
-  const result = await Course.find().limit(10).sort({ name: 1 });
+  const result = await Course.find()
+    //find({ author: /.*mosh.*/i }) // string patterns which contains mosh in any part of the string
+    //(string ending with saini)find({ author: /saini$/i }) //(string starting with akshay)find({ author: /^akshay/i })
+    .limit(10)
+    .sort({ name: 1 });
   // .select({ name: 1, tags: 1 });
   console.log(result);
 }
