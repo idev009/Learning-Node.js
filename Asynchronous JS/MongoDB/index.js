@@ -17,7 +17,16 @@ const courseSchema = new mongoose.Schema({
     required: true,
     enum: ["web", "mobile", "desktop"],
   },
-  tags: [String],
+  // Custom Validation Function , Custom Validator
+  tags: {
+    type: Array,
+    validate: {
+      validator: function (v) {
+        return v && v.length > 0;
+      },
+      message: "A course should have atleast one tag",
+    },
+  },
   date: { type: Date, default: Date.now },
   price: {
     type: Number,
