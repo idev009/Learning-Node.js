@@ -7,11 +7,23 @@ mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }) //connect method return promise
   .then((result) => console.log("connected to mongo db"))
   .catch((err) => console.log(err));
+
+// Validation Using Mongoose and Inbuilt Validation Operators
 const courseSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, minlength: 3, maxlength: 100 },
   author: String,
+  category: {
+    type: String,
+    required: true,
+    enum: ["web", "mobile", "desktop"],
+  },
   tags: [String],
   date: { type: Date, default: Date.now },
+  price: {
+    type: Number,
+    required: true,
+    min: 5,
+  },
   isPublished: Boolean,
 });
 const Course = mongoose.model("Course", courseSchema);
@@ -20,6 +32,7 @@ async function createCourse() {
     name: "React course",
     author: "Akshay Saini",
     tags: ["react", "frontend"],
+    category: "web",
     isPublished: true,
   });
   try {
