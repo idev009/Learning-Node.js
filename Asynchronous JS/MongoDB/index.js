@@ -8,7 +8,7 @@ mongoose
   .then((result) => console.log("connected to mongo db"))
   .catch((err) => console.log(err));
 const courseSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true },
   author: String,
   tags: [String],
   date: { type: Date, default: Date.now },
@@ -22,9 +22,12 @@ async function createCourse() {
     tags: ["react", "frontend"],
     isPublished: true,
   });
-
-  const result = await course.save();
-  console.log(result);
+  try {
+    const result = await course.save();
+    console.log(result);
+  } catch (err) {
+    console.log(err.message);
+  }
 }
 
 async function fetchRecord() {
@@ -38,13 +41,57 @@ async function fetchRecord() {
 }
 
 // find record and filtering records
-fetchRecord();
+// fetchRecord();
 
 // save record
-// createCourse();
+createCourse();
 
 // mongodb://localhost:27017
 
 // Comparision Operators gt,lt,lte,gte, in , nin
 // Logical Operators and, or
 // Regular Expression :- String
+
+// Updating the Document
+
+// async function updateDocument(id) {
+// const result = await Course.updateOne(
+//   { _id: id },
+//   {
+//     $set: {
+//       isPublished: true,
+//       author: "Brad Trasnversy",
+//     },
+//   }
+// );
+// console.log(result);
+
+//  3rd Approach
+//   const course = await Course.findByIdAndUpdate(
+//     id,
+//     {
+//       $set: {
+//         isPublished: false,
+//         author: "Jack Ma",
+//       },
+//     },
+//     { new: true }
+//   );
+
+//   console.log(course);
+//   // 1st Approach
+//   // const course = await Course.findById(id);
+//   // if (!course) return;
+//   // course.isPublished = true;
+//   // course.author = "An Author";
+//   // const result = await course.save();
+// }
+
+// updateDocument("63be594bae9e3c5c054c9a4e");
+
+// async function removeDocument(id) {
+//   const result = await Course.findByIdAndDelete(id);
+//   console.log(result);
+// }
+
+// removeDocument("63be594bae9e3c5c054c9a4e");
